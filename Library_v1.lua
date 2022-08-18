@@ -709,7 +709,7 @@ function Library:Window(Text)
                     
                     DropdownFrameSize = 0
                     ItemFrameSize = 0
-                    DropItemHolder.CanvasSide = UDim2.new()
+                    DropItemHolder.CanvasSize = UDim2.new()
                     
                     for i,v in next,List do
                         local Option = Instance.new("TextButton",DropItemHolder)
