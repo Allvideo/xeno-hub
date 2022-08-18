@@ -702,7 +702,9 @@ function Library:Window(Text)
                     List = NewList
                     
                     for i,v in next,DropItemHolder:GetChildren() do
-                        v:Destroy()
+                        if v ~= DropItemHolderList then
+                            v:Destroy()
+                        end
                     end
                     
                     for i,v in next,List do
