@@ -692,7 +692,11 @@ function Library:Window(Text)
             ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
             
             function Object:Update(NewText,NewList,NewCallback)
-                Title.Text = NewText
+                Text = NewText
+                
+                if not Down then
+                    Title.Text = NewText
+                end
                 
                 if NewCallback then
                     Callback = NewCallback
