@@ -693,10 +693,13 @@ function Library:Window(Text)
             
             function Object:Update(NewText,NewList,NewCallback)
                 Title.Text = NewText
-                Selected = NewText
                 
                 if NewCallback then
                     Callback = NewCallback
+                end
+                
+                if not table.find(NewList,Selected) then
+                    Selected = NewText
                 end
                 
                 List = NewList
