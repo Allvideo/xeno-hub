@@ -700,6 +700,10 @@ function Library:Window(Text)
                 
                 if not table.find(NewList,Selected) then
                     Selected = NewText
+                    
+                    task.spawn(function()
+                        pcall(Callback,NewText)
+                    end)
                 end
                 
                 List = NewList
