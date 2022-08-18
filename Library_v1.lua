@@ -707,6 +707,10 @@ function Library:Window(Text)
                         end
                     end
                     
+                    DropdownFrameSize = 0
+                    ItemFrameSize = 0
+                    DropItemHolder.CanvasSide = UDim2.new()
+                    
                     for i,v in next,List do
                         local Option = Instance.new("TextButton",DropItemHolder)
                         local OptionCorner = Instance.new("UICorner",Option)
