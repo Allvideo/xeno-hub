@@ -710,6 +710,8 @@ function Library:Window(Text)
                     end)
                 end
                 
+                local OldPosition = DropItemHolder.CanvasPosition
+                
                 List = NewList
                 
                 for i,v in next,DropItemHolder:GetChildren() do
@@ -778,6 +780,8 @@ function Library:Window(Text)
                         ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
                     end)
                 end
+                
+                DropItemHolder.CanvasPosition = OldPosition
                 
                 if Down then
                     DropdownFrame:TweenSize(UDim2.new(1,-8,0,DropdownFrameSize),"Out","Quart",0.1,true)
