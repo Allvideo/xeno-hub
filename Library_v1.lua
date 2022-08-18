@@ -763,14 +763,14 @@ function Library:Window(Text)
                             ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
                         end)
                     end
-                end
-                
-                if Down then
-                    DropdownFrame:TweenSize(UDim2.new(1,-8,0,DropdownFrameSize),"Out","Quart",0.1,true)
-                    DropItemHolder:TweenSize(UDim2.new(1,-21,0,ItemFrameSize),"Out","Quart",0.1,true)
-                    task.wait(0.1)
                     
-                    ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
+                    if Down then
+                        DropdownFrame:TweenSize(UDim2.new(1,-8,0,DropdownFrameSize),"Out","Quart",0.1,true)
+                        DropItemHolder:TweenSize(UDim2.new(1,-21,0,ItemFrameSize),"Out","Quart",0.1,true)
+                        task.wait(0.1)
+                        
+                        ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
+                    end
                 end
             end
             
