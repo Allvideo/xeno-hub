@@ -693,88 +693,87 @@ function Library:Window(Text)
             
             function Object:Update(NewText,NewList,NewCallback)
                 Title.Text = NewText
+                Selected = NewText
                 
                 if NewCallback then
                     Callback = NewCallback
                 end
                 
-                if NewList then
-                    List = NewList
+                List = NewList
+                
+                for i,v in next,DropItemHolder:GetChildren() do
+                    if v:IsA("TextButton") then
+                        v:Destroy()
+                    end
+                end
+                
+                DropdownFrameSize = 0
+                ItemFrameSize = 0
+                DropItemHolder.CanvasSize = UDim2.new()
+                
+                for i,v in next,List do
+                    local Option = Instance.new("TextButton",DropItemHolder)
+                    local OptionCorner = Instance.new("UICorner",Option)
                     
-                    for i,v in next,DropItemHolder:GetChildren() do
-                        if v:IsA("TextButton") then
-                            v:Destroy()
-                        end
+                    Option.AutoButtonColor = false
+                    Option.BackgroundColor3 = Color3.fromRGB(39,39,39)
+                    Option.Name = "Option"
+                    Option.Size = UDim2.new(1,-5,0,25)
+                    Option.Font = "Gotham"
+                    Option.Text = v
+                    Option.TextColor3 = Color3.fromRGB(195,195,195)
+                    Option.TextSize = 14
+                    
+                    OptionCorner.CornerRadius = UDim.new(0,6)
+                    OptionCorner.Name = "OptionCorner"
+                    
+                    if i < 4 then
+                        DropdownFrameSize = DropItemHolderList.AbsoluteContentSize.Y + 8
+                        ItemFrameSize = DropItemHolderList.AbsoluteContentSize.Y
+                    else
+                        DropItemHolder.CanvasSize = UDim2.new(0,0,0,DropItemHolderList.AbsoluteContentSize.Y)
                     end
                     
-                    DropdownFrameSize = 0
-                    ItemFrameSize = 0
-                    DropItemHolder.CanvasSize = UDim2.new()
+                    Option.MouseEnter:Connect(function()
+                        Tween:Create(Option,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(44,44,44)}):Play()
+                    end)
                     
-                    for i,v in next,List do
-                        local Option = Instance.new("TextButton",DropItemHolder)
-                        local OptionCorner = Instance.new("UICorner",Option)
-                        
-                        Option.AutoButtonColor = false
-                        Option.BackgroundColor3 = Color3.fromRGB(39,39,39)
-                        Option.Name = "Option"
-                        Option.Size = UDim2.new(1,-5,0,25)
-                        Option.Font = "Gotham"
-                        Option.Text = v
-                        Option.TextColor3 = Color3.fromRGB(195,195,195)
-                        Option.TextSize = 14
-                        
-                        OptionCorner.CornerRadius = UDim.new(0,6)
-                        OptionCorner.Name = "OptionCorner"
-                        
-                        if i < 4 then
-                            DropdownFrameSize = DropItemHolderList.AbsoluteContentSize.Y + 8
-                            ItemFrameSize = DropItemHolderList.AbsoluteContentSize.Y
-                        else
-                            DropItemHolder.CanvasSize = UDim2.new(0,0,0,DropItemHolderList.AbsoluteContentSize.Y)
-                        end
-                        
-                        Option.MouseEnter:Connect(function()
-                            Tween:Create(Option,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(44,44,44)}):Play()
-                        end)
-                        
-                        Option.MouseLeave:Connect(function()
-                            Tween:Create(Option,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(39,39,39)}):Play()
-                        end)
-                        
-                        Option.MouseButton1Click:Connect(function()
-                            Down = false
-                            
-                            Tween:Create(Title,TweenInfo.new(0.3),{TextTransparency = 0}):Play()
-                            Tween:Create(DropToggle,TweenInfo.new(0.3),{Rotation = 0}):Play()
-                            
-                            Title.Text = Text
-                            Selected = v
-                            
-                            DropdownFrame:TweenSize(UDim2.new(1,-8,0,0),"Out","Quart",0.1,true)
-                            DropItemHolder:TweenSize(UDim2.new(1,-21,0,0),"Out","Quart",0.1,true)
-                            
-                            task.spawn(function()
-                                pcall(Callback,v)
-                            end)
-                            
-                            task.wait(0.05)
-                            
-                            DropdownFrame.Visible = false
-                            
-                            task.wait(0.05)
-                            
-                            ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
-                        end)
-                    end
+                    Option.MouseLeave:Connect(function()
+                        Tween:Create(Option,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(39,39,39)}):Play()
+                    end)
                     
-                    if Down then
-                        DropdownFrame:TweenSize(UDim2.new(1,-8,0,DropdownFrameSize),"Out","Quart",0.1,true)
-                        DropItemHolder:TweenSize(UDim2.new(1,-21,0,ItemFrameSize),"Out","Quart",0.1,true)
-                        task.wait(0.1)
+                    Option.MouseButton1Click:Connect(function()
+                        Down = false
+                        
+                        Tween:Create(Title,TweenInfo.new(0.3),{TextTransparency = 0}):Play()
+                        Tween:Create(DropToggle,TweenInfo.new(0.3),{Rotation = 0}):Play()
+                        
+                        Title.Text = Text
+                        Selected = v
+                        
+                        DropdownFrame:TweenSize(UDim2.new(1,-8,0,0),"Out","Quart",0.1,true)
+                        DropItemHolder:TweenSize(UDim2.new(1,-21,0,0),"Out","Quart",0.1,true)
+                        
+                        task.spawn(function()
+                            pcall(Callback,v)
+                        end)
+                        
+                        task.wait(0.05)
+                        
+                        DropdownFrame.Visible = false
+                        
+                        task.wait(0.05)
                         
                         ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
-                    end
+                    end)
+                end
+                
+                if Down then
+                    DropdownFrame:TweenSize(UDim2.new(1,-8,0,DropdownFrameSize),"Out","Quart",0.1,true)
+                    DropItemHolder:TweenSize(UDim2.new(1,-21,0,ItemFrameSize),"Out","Quart",0.1,true)
+                    task.wait(0.1)
+                    
+                    ItemHolder.CanvasSize = UDim2.new(0,0,0,ItemHolderList.AbsoluteContentSize.Y)
                 end
             end
             
