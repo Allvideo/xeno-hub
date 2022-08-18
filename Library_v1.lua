@@ -702,7 +702,7 @@ function Library:Window(Text)
                     List = NewList
                     
                     for i,v in next,DropItemHolder:GetChildren() do
-                        if v ~= DropItemHolderList then
+                        if v:IsA("TextButton") then
                             v:Destroy()
                         end
                     end
