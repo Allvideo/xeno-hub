@@ -429,13 +429,14 @@ function Library:Window(Text)
             Value.TextSize = 14
             
             Increment = Increment or 1
+            Increment = 1 / Increment
             
             if Default then
                 local Position = UDim2.new((math.clamp(Default,Min,Max) - Min) * (SlideFrame.AbsoluteSize.X / (Max - Min)) / SlideFrame.AbsoluteSize.X,0,1,0)
                 
                 ValueFrame.Size = Position
                 
-                local SlideValue = Increment * math.round((Position.X.Scale * (Max - Min) + Min) / Increment)
+                local SlideValue = math.round((Position.X.Scale * (Max - Min) + Min) * Increment) / Increment
                 
                 Value.Text = SlideValue
                 
@@ -449,7 +450,7 @@ function Library:Window(Text)
                 
                 ValueFrame:TweenSize(Position,"Out","Quart",0.3,true)
                 
-                local SlideValue = Increment * math.round((Position.X.Scale * (Max - Min) + Min) / Increment)
+                local SlideValue = math.round((Position.X.Scale * (Max - Min) + Min) * Increment) / Increment
                 
                 Value.Text = SlideValue
                 
@@ -470,7 +471,7 @@ function Library:Window(Text)
             end)
             
             UserInput.InputChanged:Connect(function(Input)
-                if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch and Dragging then
+                if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) and Dragging then
                     if Gui.Enabled then
                         Slide(Input)
                     else
@@ -501,14 +502,14 @@ function Library:Window(Text)
                 end
                 
                 if NewIncrement then
-                    Increment = NewIncrement
+                    Increment = 1 / NewIncrement
                 end
                 
                 local Position = UDim2.new((math.clamp(Default,Min,Max) - Min) * (SlideFrame.AbsoluteSize.X / (Max - Min)) / SlideFrame.AbsoluteSize.X,0,1,0)
                 
                 ValueFrame:TweenSize(Position,"Out","Quart",0.3,true)
                 
-                local SlideValue = Increment * math.round((Position.X.Scale * (Max - Min) + Min) / Increment)
+                local SlideValue = math.round((Position.X.Scale * (Max - Min) + Min) * Increment) / Increment
                 
                 Value.Text = SlideValue
                 
