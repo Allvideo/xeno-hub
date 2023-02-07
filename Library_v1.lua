@@ -1174,11 +1174,13 @@ function Library:Window(Text)
                 if Enter and #TextBox.Text > 0 then
                     TextBox:TweenSize(UDim2.new(0,192,0,26),"Out","Quart",0.1,true)
                     
+                    local Text = TextBox.Text
+                    
                     if Disappear then
                         TextBox.Text = ""
                     end
                     
-                    pcall(Callback,TextBox.Text)
+                    pcall(Callback,Text)
                 end
             end)
             
@@ -1306,8 +1308,8 @@ function Library:Window(Text)
             Label.Size = UDim2.new(1,-8,0,29)
             Label.Font = "Gotham"
             Label.Text = Text
-            Label.TextColor3 = Color3.fromRGB(195, 195, 195)
-            Label.TextSize = 14.000
+            Label.TextColor3 = Color3.fromRGB(195,195,195)
+            Label.TextSize = 14
             
             LabelCorner.CornerRadius = UDim.new(0,6)
             LabelCorner.Name = "LabelCorner"
