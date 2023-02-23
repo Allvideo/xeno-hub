@@ -1080,7 +1080,7 @@ function Library:Window(Text)
                         Run.Heartbeat:Wait()
                     end
                 else
-                    Tween:Create(RainbowStatus,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255, 39, 42)}):Play()
+                    Tween:Create(RainbowStatus,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,39,42)}):Play()
                     
                     CurrentColor.BackgroundColor3 = OldToggleColor
                     Color.BackgroundColor3 = OldColor
@@ -1172,8 +1172,6 @@ function Library:Window(Text)
             
             TextBox.FocusLost:Connect(function(Enter)
                 if #TextBox.Text > 0 then
-                    TextBox:TweenSize(UDim2.new(0,192,0,26),"Out","Quart",0.1,true)
-                    
                     if Enter then
                         local Text = TextBox.Text
                         
@@ -1183,6 +1181,8 @@ function Library:Window(Text)
                         
                         pcall(Callback,Text)
                     end
+                else
+                    TextBox:TweenSize(UDim2.new(0,192,0,26),"Out","Quart",0.1,true)
                 end
             end)
             
