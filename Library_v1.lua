@@ -1173,6 +1173,8 @@ function Library:Window(Text)
             TextBox.FocusLost:Connect(function(Enter)
                 if #TextBox.Text > 0 then
                     if Enter then
+                        TextBox:TweenSize(UDim2.new(0,192,0,26),"Out","Quart",0.1,true)
+                        
                         local Text = TextBox.Text
                         
                         if Disappear then
