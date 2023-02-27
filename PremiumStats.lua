@@ -3,63 +3,51 @@ return {
     Commands = {
         Ban = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Fake bans Player"
+            Optional = {}
         },
         Bang = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Makes you bang Player"
+            Optional = {}
         },
         Bring = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Teleports Player to you"
+            Optional = {}
         },
         Crash = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Crashes Player's game"
+            Optional = {}
         },
         Fling = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Flings Player"
+            Optional = {}
         },
         Freeze = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Freezes Player"
+            Optional = {}
         },
         Kick = {
             Required = {"Player"},
-            Optional = {"Message"},
-            Description = "Kicks Player with Message"
+            Optional = {"Message"}
         },
         Kill = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Kills Player"
+            Optional = {}
         },
         Say = {
             Required = {"Player","Message"},
-            Optional = {},
-            Description = "Makes Player say Message"
+            Optional = {}
         },
         Shutdown = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Closes Player's game"
+            Optional = {}
         },
         Unbang = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Stops banging Player"
+            Optional = {}
         },
         Unfreeze = {
             Required = {"Player"},
-            Optional = {},
-            Description = "Unfreezes Player"
+            Optional = {}
         }
     },
     Args = {
@@ -71,6 +59,6 @@ return {
             DisplayName = "User's display name (auto completes)",
             Name = "User's name (auto completes)"
         },
-        Message = {"..."}
+        Message = {}
     }
 }
