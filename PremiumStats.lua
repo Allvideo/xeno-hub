@@ -1,51 +1,63 @@
 return {
     Prefix = "!",
     Commands = {
-        Ban = {
+        {
+            Name = "Ban",
             Required = {"Player"},
             Optional = {}
         },
-        Bang = {
+        {
+            Name = "Bang",
             Required = {"Player"},
             Optional = {}
         },
-        Bring = {
+        {
+            Name = "Bring",
             Required = {"Player"},
             Optional = {}
         },
-        Crash = {
+        {
+            Name = "Crash",
             Required = {"Player"},
             Optional = {}
         },
-        Fling = {
+        {
+            Name = "Fling",
             Required = {"Player"},
             Optional = {}
         },
-        Freeze = {
+        {
+            Name = "Freeze",
             Required = {"Player"},
             Optional = {}
         },
-        Kick = {
+        {
+            Name = "Kick",
             Required = {"Player"},
             Optional = {"Message"}
         },
-        Kill = {
+        {
+            Name = "Kill",
             Required = {"Player"},
             Optional = {}
         },
-        Say = {
+        {
+            Name = "Say",
             Required = {"Player","Message"},
             Optional = {}
         },
-        Shutdown = {
+        {
+            Name = "Shutdown",
             Required = {"Player"},
             Optional = {}
         },
-        Unbang = {
+        {
+            Name = "Unbang",
             Required = {"Player"},
             Optional = {}
         },
-        Unfreeze = {
+        {
+            Name = "Unfreeze",
             Required = {"Player"},
             Optional = {}
         }
